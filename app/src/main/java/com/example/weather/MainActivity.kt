@@ -22,7 +22,7 @@ import java.util.Locale
 import javax.net.ssl.SSLSessionBindingEvent
 import javax.net.ssl.SSLSessionBindingListener
 
-//18a71332d35c4acfead89039ad4bb91c
+
 class MainActivity : AppCompatActivity() {
     private val binding: ActivityMainBinding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
@@ -57,10 +57,10 @@ class MainActivity : AppCompatActivity() {
     private fun fetchWeatherData(cityName: String) {
         val retrofit = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("https://api.openweathermap.org/data/2.5/")
+            .baseUrl("https://api.openweathermap.org/data/2.5/")//paste your URL
             .build().create(ApiInterface::class.java)
         val response =
-            retrofit.getWeatherData(cityName, "18a71332d35c4acfead89039ad4bb91c", "metric")
+            retrofit.getWeatherData(cityName, "your-WeatherAPI key", "metric")
 
         response.enqueue(object : Callback<WeatherApp> {
             override fun onResponse(call: Call<WeatherApp>, response: Response<WeatherApp>) {
